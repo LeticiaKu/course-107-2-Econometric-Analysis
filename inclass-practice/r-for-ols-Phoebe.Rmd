@@ -75,7 +75,33 @@ summary(journals)
 > 期刊的價格(citeprice，平均文獻引用價格)如何影響其圖書館訂閱量(subs)? 
 
 ```{r ols-paircorr-r, echo=TRUE}
+library(psych)
+journals %>% 
+  select(citeprice,subs) %>%
+  pairs.panels()
+#psych::pairs.panels用來畫圖
+(dataframe )
+```
 
+```{r}
+#traditional usage (data,想選的變數)
+select(journals,citeprice,subs) -> tempDF
+#traditioanal pairs.panels
+pairs.panels(tempDF)
+#pipe寫法
+journals %>% 
+  select(citeprice,subs) ->
+  tempDF
+#pipe做pairs.panels
+tempDF %>%
+  pairs.panels()
+```
+
+```{r}
+#pipe的優點可以串接以上的流程
+journals %>%
+  select(citeprice,subs) %>%
+  pairs.panels()
 ```
 
 
